@@ -1,0 +1,10 @@
+apiVersion: platform.example.com/v1alpha1
+kind: GCPBucket
+metadata:
+  name: example
+  namespace: default
+spec:
+  parameters:
+    location: US
+    versioning: true
+    acl: publicRead

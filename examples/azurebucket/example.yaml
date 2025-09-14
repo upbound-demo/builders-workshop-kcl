@@ -1,0 +1,10 @@
+apiVersion: platform.example.com/v1alpha1
+kind: AzureBucket
+metadata:
+  name: javid-example
+  namespace: default
+spec:
+  parameters:
+    location: eastus
+    versioning: true
+    acl: public

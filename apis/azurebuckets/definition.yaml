@@ -1,0 +1,39 @@
+apiVersion: apiextensions.crossplane.io/v2
+kind: CompositeResourceDefinition
+metadata:
+  name: azurebuckets.platform.example.com
+spec:
+  group: platform.example.com
+  names:
+    categories:
+    - crossplane
+    kind: AzureBucket
+    plural: azurebuckets
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    referenceable: true
+    schema:
+      openAPIV3Schema:
+        description: AzureBucket is the Schema for the AzureBucket API.
+        properties:
+          spec:
+            description: AzureBucketSpec defines the desired state of AzureBucket.
+            properties:
+              parameters:
+                properties:
+                  acl:
+                    type: string
+                  location:
+                    type: string
+                  versioning:
+                    type: boolean
+                type: object
+            type: object
+          status:
+            description: AzureBucketStatus defines the observed state of AzureBucket.
+            type: object
+        required:
+        - spec
+        type: object
+    served: true

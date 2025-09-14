@@ -1,0 +1,16 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: gcpbuckets.platform.example.com
+spec:
+  compositeTypeRef:
+    apiVersion: platform.example.com/v1alpha1
+    kind: GCPBucket
+  mode: Pipeline
+  pipeline:
+  - functionRef:
+      name: upbound-demo-upbound-hello-worldgcp-function
+    step: gcp-function
+  - functionRef:
+      name: crossplane-contrib-function-auto-ready
+    step: crossplane-contrib-function-auto-ready

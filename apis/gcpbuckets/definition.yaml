@@ -1,0 +1,39 @@
+apiVersion: apiextensions.crossplane.io/v2
+kind: CompositeResourceDefinition
+metadata:
+  name: gcpbuckets.platform.example.com
+spec:
+  group: platform.example.com
+  names:
+    categories:
+    - crossplane
+    kind: GCPBucket
+    plural: gcpbuckets
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    referenceable: true
+    schema:
+      openAPIV3Schema:
+        description: GCPBucket is the Schema for the GCPBucket API.
+        properties:
+          spec:
+            description: GCPBucketSpec defines the desired state of GCPBucket.
+            properties:
+              parameters:
+                properties:
+                  acl:
+                    type: string
+                  location:
+                    type: string
+                  versioning:
+                    type: boolean
+                type: object
+            type: object
+          status:
+            description: GCPBucketStatus defines the observed state of GCPBucket.
+            type: object
+        required:
+        - spec
+        type: object
+    served: true

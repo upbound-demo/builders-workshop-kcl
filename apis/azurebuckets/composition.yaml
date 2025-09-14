@@ -1,0 +1,16 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: azurebuckets.platform.example.com
+spec:
+  compositeTypeRef:
+    apiVersion: platform.example.com/v1alpha1
+    kind: AzureBucket
+  mode: Pipeline
+  pipeline:
+  - functionRef:
+      name: upbound-demo-upbound-hello-worldazure-function
+    step: azure-function
+  - functionRef:
+      name: crossplane-contrib-function-auto-ready
+    step: crossplane-contrib-function-auto-ready
